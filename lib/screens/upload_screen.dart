@@ -10,11 +10,21 @@ class UploadScreen extends StatefulWidget {
 class _UploadScreenState extends State<UploadScreen> {
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      appBar: AppBar(title: const Text("Upload Screen")),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Upload Screen"),
+      ),
       body: Column(
-        children: const [
-
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            alignment: Alignment.center,
+            child: Image.asset(
+              'assets/images/upload.png',
+              width: 200,
+              height: 200,
+            ),
+          ),
         ],
       ),
     );
