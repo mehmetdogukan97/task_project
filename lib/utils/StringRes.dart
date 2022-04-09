@@ -5,4 +5,6 @@ class StringRes{
   static String uploadScreenSizeDescription = "Allowed file size: 128 mb";
   static String uploadScreenButtonText = "Choose File";
 
+  static String filesScreenAppBarTitle = "All Files";
+
 }

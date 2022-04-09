@@ -66,18 +66,28 @@ class _UploadScreenState extends State<UploadScreen> {
           ),
           InkWell(
             onTap: () async {
-              final result =
-                  await FilePicker.platform.pickFiles(allowMultiple: true);
+              final result = await FilePicker.platform.pickFiles(
+                allowMultiple: true,
+                type: FileType.custom,
+                allowedExtensions: [
+                  'pdf',
+                  'mp3',
+                  'mp4',
+                  'jpg',
+                  'jpeg',
+                  'png',
+                  'mov',
+                  'svg',
+                  'txt',
+                  'docx',
+                  'xml',
+                  'xlsx'
+                ],
+              );
               if (result == null) return;
-
               openFiles(result.files);
-
-              //open single file
               final file = result.files.first;
-              openFile(file);
-
               final newFile = await saveFilePermanently(file);
-
             },
             child: Padding(
               padding: const EdgeInsets.only(top: 40.0, left: 20, right: 20),
