@@ -19,7 +19,7 @@ class _UploadScreenState extends State<UploadScreen> {
         elevation: 0.5,
         backgroundColor: mobileAppBarColor,
         title: Text(
-          StringRes.appBarTitle,
+          StringRes.uploadScreenAppBarTitle,
           style: const TextStyle(
             color: mobileAppBarTextColor,
             fontSize: 25,
@@ -29,8 +29,35 @@ class _UploadScreenState extends State<UploadScreen> {
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          UploadImageWidget(),
+        children: [
+          const UploadImageWidget(),
+          SizedBox(
+            height: 70,
+          ),
+          Text(
+            StringRes.uploadScreenDescription,
+            style: const TextStyle(
+              fontSize: 20,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 30.0, right: 30, top: 20),
+            child: Text(
+              StringRes.uploadScreenSubDescription,
+              style: const TextStyle(
+                fontSize: 17,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 20.0),
+            child: Text(
+              StringRes.uploadScreenSizeDescription,
+              style: const TextStyle(
+                fontSize: 17,
+              ),
+            ),
+          ),
         ],
       ),
     );
