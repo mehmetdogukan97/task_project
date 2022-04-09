@@ -12,8 +12,10 @@ class _UploadScreenState extends State<UploadScreen> {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(title: const Text("Upload Screen")),
-      body: const Center(
-        child: Text("Upload Screen"),
+      body: Column(
+        children: const [
+
+        ],
       ),
     );
   }
