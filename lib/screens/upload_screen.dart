@@ -1,6 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:task_project/screens/files_screen.dart';
 import 'package:task_project/utils/StringRes.dart';
 import 'package:task_project/widgets/upload_image_widget.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:open_file/open_file.dart';
+import 'package:path_provider/path_provider.dart';
 
 import '../utils/colors.dart';
 
@@ -59,7 +65,20 @@ class _UploadScreenState extends State<UploadScreen> {
             ),
           ),
           InkWell(
-            onTap: (){print("Hello");},
+            onTap: () async {
+              final result =
+                  await FilePicker.platform.pickFiles(allowMultiple: true);
+              if (result == null) return;
+
+              openFiles(result.files);
+
+              //open single file
+              final file = result.files.first;
+              openFile(file);
+
+              final newFile = await saveFilePermanently(file);
+
+            },
             child: Padding(
               padding: const EdgeInsets.only(top: 40.0, left: 20, right: 20),
               child: Container(
@@ -70,7 +89,7 @@ class _UploadScreenState extends State<UploadScreen> {
                   border: Border.all(width: 1.0),
                   borderRadius: BorderRadius.circular(15),
                 ),
-                child:  Text(
+                child: Text(
                   StringRes.uploadScreenButtonText,
                   style: const TextStyle(
                     fontSize: 20,
@@ -83,5 +102,22 @@ class _UploadScreenState extends State<UploadScreen> {
         ],
       ),
     );
+  }
+
+  Future<File> saveFilePermanently(PlatformFile file) async {
+    final appStorage = await getApplicationDocumentsDirectory();
+    final newFile = File('${appStorage.path}/${file.name}');
+
+    return File(file.path!).copy(newFile.path);
+  }
+
+  void openFile(PlatformFile file) {
+    OpenFile.open(file.path!);
+  }
+
+  void openFiles(List<PlatformFile> files) {
+    Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) =>
+            FilesScreen(files: files, onOpenedFile: openFile)));
   }
 }
