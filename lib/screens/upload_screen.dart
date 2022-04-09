@@ -31,7 +31,7 @@ class _UploadScreenState extends State<UploadScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const UploadImageWidget(),
-          SizedBox(
+          const SizedBox(
             height: 70,
           ),
           Text(
@@ -55,6 +55,28 @@ class _UploadScreenState extends State<UploadScreen> {
               StringRes.uploadScreenSizeDescription,
               style: const TextStyle(
                 fontSize: 17,
+              ),
+            ),
+          ),
+          InkWell(
+            onTap: (){print("Hello");},
+            child: Padding(
+              padding: const EdgeInsets.only(top: 40.0, left: 20, right: 20),
+              child: Container(
+                alignment: Alignment.center,
+                width: double.infinity,
+                height: 50,
+                decoration: BoxDecoration(
+                  border: Border.all(width: 1.0),
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child:  Text(
+                  StringRes.uploadScreenButtonText,
+                  style: const TextStyle(
+                    fontSize: 20,
+                    color: mobileUploadScreenUploadBtnTxtColor,
+                  ),
+                ),
               ),
             ),
           ),
