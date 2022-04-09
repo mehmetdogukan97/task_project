@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_project/widgets/upload_image_widget.dart';
 
 class UploadScreen extends StatefulWidget {
   const UploadScreen({Key? key}) : super(key: key);
@@ -16,15 +17,8 @@ class _UploadScreenState extends State<UploadScreen> {
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            alignment: Alignment.center,
-            child: Image.asset(
-              'assets/images/upload.png',
-              width: 200,
-              height: 200,
-            ),
-          ),
+        children: const [
+           UploadImageWidget(),
         ],
       ),
     );
